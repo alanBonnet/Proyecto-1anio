@@ -6,7 +6,7 @@ const RequiredString8 = {
     required:true
 }
 const UserModel = new Schema({
-    username:RequiredString8,
+    username:{... RequiredString8, unique:true},
 
     password:RequiredString8,
 
@@ -17,10 +17,8 @@ const UserModel = new Schema({
         default:true
     },
     role:{
-        type:[String],
-        //TODO: tener en cuenta que hay que manejar bien este tipo de dato para que un usuario sea multi rol
-        default:["normal_user"],
-
+        type:String,
+        default:"normal_user",
         
     }
 },{

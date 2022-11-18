@@ -19,7 +19,7 @@ app.use(morgan('tiny'));
 app.use(express.json());
 
 // Rutas
-
+app.use(require('./routes/user.routes')) // Rutas de Usuario
 
 //Inicio del servidor
 app.listen(port, () => {console.log("Iniciado en https://localhost:" + port)});

@@ -20,7 +20,8 @@ app.use(express.json());
 
 // Rutas
 app.use(require('./routes/user.routes')) // Rutas de Usuario
-
+app.use(require('./routes/auth.routes')) // Rutas de Authentication
 //Inicio del servidor
-app.listen(port, () => {console.log("Iniciado en https://localhost:" + port)});
-
+app.listen(port, () => {
+    console.log("Iniciado en https://localhost:" + port)
+});

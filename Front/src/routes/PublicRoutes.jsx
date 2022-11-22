@@ -5,7 +5,7 @@ import {AuthContext} from '../context/AuthContext'
 export const PublicRoutes = ({ children }) => {
     const { user } = useContext(AuthContext)
     return user.isLogged 
-    ? <p>está logeado</p>//TODO:Redireccionar a una ruta privada
+    ? <p>está logeado</p>//TODO:Redireccionar a una ruta privada <Navigate to="/admin"}>
     
     : children
 

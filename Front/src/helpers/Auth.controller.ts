@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction } from "react"
-
+import existError from "./Msg.controllers";
 const toFetchPOST = async (url: string, body: object):Promise<any> => {
     try {
         let myHeaders = new Headers();
@@ -41,15 +41,7 @@ const SingIn = async (user: object, setUser: Dispatch<SetStateAction<string | ob
         const objectResp1 = await response1.json();
         console.log(objectResp1.errors)
         if(!objectResp1?.errors){
-            const response = await toFetchPOST('http://localhost:3000/login', user);
-            const objectResp = await response.json();
-            console.log(objectResp)
-            setUser({
-                ...user,
-                isLogged: true,
-                password:"",
-                ...objectResp
-            })
+            Login(user, setUser)
         }
         setError([...objectResp1.errors])
         setTimeout(() =>{setError([])},6000)
@@ -61,5 +53,6 @@ const SingIn = async (user: object, setUser: Dispatch<SetStateAction<string | ob
 
 export const diccionaryLog = {
     "iniciar sesion": Login,
-    "registrarse":SingIn
+    "registrarse":SingIn,
+    "si existe Error": existError
 }

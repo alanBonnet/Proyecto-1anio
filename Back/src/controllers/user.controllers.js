@@ -124,8 +124,6 @@ CtrlUser.deleteUser = async (req, res) => {
                 message: `El usuario ya no existe`
             })
         }
-        // TODO: Busco y actualizo el estado de los curriculums a inactivo
-
         // Busco y actualizo el estado del usuario a eliminar
         await user.updateOne({
             isActive: false

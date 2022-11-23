@@ -1,5 +1,12 @@
 import { Dispatch, SetStateAction } from "react"
 import existError from "./Msg.controllers";
+interface User {
+    isLogged: boolean;
+    username:string | undefined,
+    password:string | undefined,
+    email:string | undefined,
+    token:string | undefined
+}
 const toFetchPOST = async (url: string, body: object):Promise<any> => {
     try {
         let myHeaders = new Headers();
@@ -20,12 +27,12 @@ const toFetchPOST = async (url: string, body: object):Promise<any> => {
     }
 }
 
-const Login = async (user: any, setUser: Dispatch<SetStateAction<string | object> >,setError?: Dispatch<SetStateAction<string | object> >): Promise<string | void | any[]> => {
+const Login = async (user: User, setUser: Dispatch<SetStateAction<string | object> >,setError?: Dispatch<SetStateAction<string | object> >): Promise<string | void | any[]> => {
     try {
         const {username,password} = user
         const response = await toFetchPOST('http://localhost:3000/login', {username,password});
         const objectResp = await response.json()
-        if(await objectResp?.token){
+        if(objectResp?.token){
             setUser({
                 ...user,
                 isLogged: true,
@@ -41,9 +48,10 @@ const Login = async (user: any, setUser: Dispatch<SetStateAction<string | object
     }
 }
 
-const SingIn = async (user: object, setUser: Dispatch<SetStateAction<string | object> >,setError:Dispatch<SetStateAction<string | object> >): Promise<string | void> => {
+const SingIn = async (user: User, setUser: Dispatch<SetStateAction<string | object> >,setError:Dispatch<SetStateAction<string | object> >): Promise<string | void> => {
     try {
-        const response1 = await toFetchPOST('http://localhost:3000/user/register', user);
+        const {username,email,password} = user
+        const response1 = await toFetchPOST('http://localhost:3000/user/register', {username, email, password});
         const objectResp1 = await response1.json();
         // console.log(objectResp1.errors)
         if(!objectResp1?.errors){

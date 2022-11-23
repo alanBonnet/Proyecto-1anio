@@ -1,13 +1,13 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import { diccionaryLog } from "../helpers/Auth.controller";
 export default function login() {
     const { user, setUser } = useContext(AuthContext)
-
+    const [error, setError] = useState()
     const handleSubmit = (e) => {
         e.preventDefault();
-        diccionaryLog['iniciar sesion'](user, setUser);
+        diccionaryLog['iniciar sesion'](user, setUser, setError);
     }
 
     return (
@@ -36,6 +36,7 @@ export default function login() {
                         <input type="text" onChange={(e) => { setUser({ ...user, username: e.target.value }) }} name="username" id="" />
                         <label>Contraseña</label>
                         <input type="password" onChange={(e) => { setUser({ ...user, password: e.target.value }) }} name="password" id="" />
+                        {diccionaryLog['si existe Error'](error,"message")}
                         <button className="form_btn">Iniciar Sesion</button>
                         <Link to={"/Register"}>
                             <button className="form_btn_2">Registrarme</button>

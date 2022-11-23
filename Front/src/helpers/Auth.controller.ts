@@ -20,16 +20,22 @@ const toFetchPOST = async (url: string, body: object):Promise<any> => {
     }
 }
 
-const Login = async (user: object, setUser: Dispatch<SetStateAction<string | object> >): Promise<string | void> => {
+const Login = async (user: any, setUser: Dispatch<SetStateAction<string | object> >,setError?: Dispatch<SetStateAction<string | object> >): Promise<string | void | any[]> => {
     try {
-        const response = await toFetchPOST('http://localhost:3000/login', user);
+        const {username,password} = user
+        const response = await toFetchPOST('http://localhost:3000/login', {username,password});
         const objectResp = await response.json()
-        setUser({
-            ...user,
-            isLogged: true,
-            password:"",
-            ...objectResp
-        })
+        if(await objectResp?.token){
+            setUser({
+                ...user,
+                isLogged: true,
+                password:"",
+                ...objectResp
+            })
+            return "logeado"
+        }
+        setError?.(`${objectResp.message}`)
+        return [... objectResp?.errors]
     } catch (error) {
         return error
     }

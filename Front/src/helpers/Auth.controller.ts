@@ -1,11 +1,11 @@
 import { Dispatch, SetStateAction } from "react"
 import existError from "./Msg.controllers";
 interface User {
-    isLogged: boolean;
-    username:string | undefined,
-    password:string | undefined,
-    email:string | undefined,
-    token:string | undefined
+    isLogged: boolean,
+    username?: string,
+    password?: string,
+    email?: string,
+    token?: string 
 }
 const toFetchPOST = async (url: string, body: object):Promise<any> => {
     try {

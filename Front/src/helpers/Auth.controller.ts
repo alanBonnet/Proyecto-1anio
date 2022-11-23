@@ -45,7 +45,7 @@ const SingIn = async (user: object, setUser: Dispatch<SetStateAction<string | ob
     try {
         const response1 = await toFetchPOST('http://localhost:3000/user/register', user);
         const objectResp1 = await response1.json();
-        console.log(objectResp1.errors)
+        // console.log(objectResp1.errors)
         if(!objectResp1?.errors){
             Login(user, setUser)
         }

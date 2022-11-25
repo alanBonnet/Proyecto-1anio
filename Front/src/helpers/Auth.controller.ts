@@ -27,7 +27,7 @@ const toFetchPOST = async (url: string, body: object):Promise<any> => {
     }
 }
 
-const Login = async (user: User, setUser: Dispatch<SetStateAction<string | object> >,setError?: Dispatch<SetStateAction<string | object> >): Promise<string | void | any[]> => {
+const Login = async (user: User, setUser: Dispatch<SetStateAction<string | User> >,setError?: Dispatch<SetStateAction<string | object> >): Promise<string | void | any[]> => {
     try {
         const {username,password} = user
         const response = await toFetchPOST('http://localhost:3000/login', {username,password});
@@ -48,7 +48,7 @@ const Login = async (user: User, setUser: Dispatch<SetStateAction<string | objec
     }
 }
 
-const SingIn = async (user: User, setUser: Dispatch<SetStateAction<string | object> >,setError:Dispatch<SetStateAction<string | object> >): Promise<string | void> => {
+const SingIn = async (user: User, setUser: Dispatch<SetStateAction<string | User> >,setError:Dispatch<SetStateAction<string | object> >): Promise<string | void> => {
     try {
         const {username,email,password} = user
         const response1 = await toFetchPOST('http://localhost:3000/user/register', {username, email, password});

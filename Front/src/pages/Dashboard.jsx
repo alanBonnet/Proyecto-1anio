@@ -1,6 +1,9 @@
 import React from "react";
-
+import { useContext } from "react";
+import { AuthContext } from "../context/AuthContext";
+import '../styles/dashboard.css'
 export default function Dashboard() {
+  const {user,setUser} = useContext(AuthContext)
   return (
     <div className="g-sidenav-show  bg-gray-200">
       <aside
@@ -14,7 +17,7 @@ export default function Dashboard() {
             id="iconSidenav"
           ></i>
           <a className="navbar-brand m-0" href="">
-            <span className="ms-1 font-weight-bold text-white">CV Manager</span>
+            <span className="ms-1 font-weight-bold text-white">CV Manager {user && user.username}</span>
           </a>
         </div>
         <hr className="horizontal light mt-0 mb-2" />
@@ -42,6 +45,7 @@ export default function Dashboard() {
               className="btn bg-gradient-primary mt-4 w-100"
               href=""
               type="button"
+              onClick={(e)=>{e.preventDefault();setUser({isLogged:false});localStorage.clear()}}
             >
               Finalizar Sesion
             </a>
@@ -56,13 +60,7 @@ export default function Dashboard() {
         ></nav>
         <div className="container-fluid py-4"></div>
       </main>
-      <script src="./assets/js/core/popper.min.js"></script>
-      <script src="./assets/js/core/bootstrap.min.js"></script>
-      <script src="./assets/js/plugins/perfect-scrollbar.min.js"></script>
-      <script src="./assets/js/plugins/smooth-scrollbar.min.js"></script>
-      <script src="./assets/js/plugins/chartjs.min.js"></script>
-      <script async defer src="https://buttons.github.io/buttons.js"></script>
-      <script src="./assets/js/material-dashboard.min.js?v=3.0.0"></script>
+     
     </div>
   );
 }

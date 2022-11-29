@@ -8,8 +8,7 @@ const LoginRoutes = () => {
     return (
         <Routes>
             <Route index element={<Login />} />
-            <Route path="/" element={<Login />} />
-            <Route path="/Register" element={<Register />} />
+            <Route path="/register" element={<Register />} />
         </Routes>
     )
 }

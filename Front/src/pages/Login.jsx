@@ -1,5 +1,5 @@
-import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useState, useEffect } from "react";
+import { Link, useRoutes } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import { diccionaryLog } from "../helpers/Auth.controller";
 export default function login() {
@@ -9,7 +9,6 @@ export default function login() {
         e.preventDefault();
         diccionaryLog['iniciar sesion'](user, setUser, setError);
     }
-
     return (
         <main>
             <div className="wrapper">

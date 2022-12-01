@@ -2,6 +2,8 @@ import React from "react";
 import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 import '../styles/dashboard.css'
+
+import { diccionaryLog } from "../helpers/Auth.controller";
 export default function Dashboard() {
   const {user,setUser} = useContext(AuthContext)
   return (
@@ -45,7 +47,7 @@ export default function Dashboard() {
               className="btn bg-gradient-primary mt-4 w-100"
               href=""
               type="button"
-              onClick={(e)=>{e.preventDefault();setUser({isLogged:false});localStorage.clear()}}
+              onClick={(e)=>{diccionaryLog['cerrar sesion'](e,setUser)}}
             >
               Finalizar Sesion
             </a>

@@ -58,7 +58,7 @@ const Login = async (user: User, setUser: Dispatch<SetStateAction<string | User>
                 ...user,
                 isLogged: true,
                 password: "",
-                ...objectResp
+                ...objectResp /* {token:"dslñaokjfn'    	2938hrn23orfnmdsñ{lf asdf awskmdfl23.4-,2341"} */
             })
             localStorage.setItem('token', objectResp.token)
             return "logeado"
@@ -104,9 +104,16 @@ const autoLogin = async (user: User, setUser: Dispatch<SetStateAction<string | U
         return ""
     }
 }
-
+const logOut = (event:Event,setUser: Dispatch<SetStateAction<string | User>>) => {
+    event.preventDefault();
+    setUser({
+        isLogged:false
+    });
+    localStorage.clear()
+}
 export const diccionaryLog = {
     "iniciar sesion": Login,
+    "cerrar sesion":logOut,
     "registrarse": SingIn,
     "si existe Error": existError,
     "autologin si existe token": autoLogin

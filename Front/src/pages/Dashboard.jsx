@@ -1,11 +1,11 @@
 import React from "react";
 import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
-import '../styles/dashboard.css'
+import "../styles/dashboard.css";
 
 import { diccionaryLog } from "../helpers/Auth.controller";
 export default function Dashboard() {
-  const {user,setUser} = useContext(AuthContext)
+  const { user, setUser } = useContext(AuthContext);
   return (
     <div className="g-sidenav-show  bg-gray-200">
       <aside
@@ -19,7 +19,9 @@ export default function Dashboard() {
             id="iconSidenav"
           ></i>
           <a className="navbar-brand m-0" href="">
-            <span className="ms-1 font-weight-bold text-white">CV Manager {user && user.username}</span>
+            <span className="ms-1 font-weight-bold text-white">
+              CV Manager {user && user.username}
+            </span>
           </a>
         </div>
         <hr className="horizontal light mt-0 mb-2" />
@@ -47,7 +49,9 @@ export default function Dashboard() {
               className="btn bg-gradient-primary mt-4 w-100"
               href=""
               type="button"
-              onClick={(e)=>{diccionaryLog['cerrar sesion'](e,setUser)}}
+              onClick={(e) => {
+                diccionaryLog["cerrar sesion"](e, setUser);
+              }}
             >
               Finalizar Sesion
             </a>
@@ -60,9 +64,21 @@ export default function Dashboard() {
           id="navbarBlur"
           navbar-scroll="true"
         ></nav>
-        <div className="container-fluid py-4"></div>
+        <div className="container-fluid py-4">
+          <input type="file" id="inpFile" />
+          <button type="button" id="btnUpload">
+            Subir a Base de datos
+          </button>
+          <button id="descargar">Descargar TXT</button>
+          <br />
+          <br />
+          <textarea
+            style={{width: "300px", height: "150px"}}
+            id="resultText"
+            placeholder="Your PDF text will appear here..."
+          ></textarea>
+        </div>
       </main>
-     
     </div>
   );
 }

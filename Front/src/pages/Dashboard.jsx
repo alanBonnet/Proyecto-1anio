@@ -43,7 +43,7 @@ export default function Dashboard() {
               </a>
             </li>
             <li className="nav-item">
-              <Link to={"/home"}>
+              <Link to={"/dashboard/home"}>
                 <div className="nav-link text-white active bg-gradient-primary">
                   <div className="text-white text-center me-2 d-flex align-items-center justify-content-center">
                     <i className="material-icons opacity-10"></i>

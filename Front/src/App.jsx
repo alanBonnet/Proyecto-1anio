@@ -4,9 +4,8 @@ import { AuthContext } from "./context/AuthContext";
 import { PublicRoutes } from "./routes/PublicRoutes";
 import LoginRoutes from "./routes/LoginRoutes";
 import { PrivateRoutes } from "./routes/PrivateRoutes";
-import Dashboard from "./pages/Dashboard";
 import { diccionaryLog } from "./helpers/Auth.controller";
-
+import DashboardRoutes from "./routes/DashboardRoutes";
 export default function App() {
     const [user, setUser] = useState({
         isLogged: false
@@ -25,9 +24,9 @@ export default function App() {
                         <LoginRoutes />
                     </PublicRoutes>
                 } />
-                <Route path="/dashboard" element={
+                <Route path="/dashboard/*" element={
                     <PrivateRoutes>
-                        <Dashboard />
+                        <DashboardRoutes />
                     </PrivateRoutes>
 
                 } />

@@ -37,7 +37,7 @@ export default function login() {
                         <input type="password" onChange={(e) => { setUser({ ...user, password: e.target.value }) }} name="password" id="" />
                         {diccionaryLog['si existe Error'](error,"message")}
                         <button className="form_btn">Iniciar Sesion</button>
-                        <Link to={"/Register"}>
+                        <Link to={"/register"}>
                             <button className="form_btn_2">Registrarme</button>
                         </Link>
                     </form>

@@ -2,8 +2,9 @@ import React from "react";
 import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 import "../styles/dashboard.css";
-
 import { diccionaryLog } from "../helpers/Auth.controller";
+import { Link } from "react-router-dom";
+
 export default function Dashboard() {
   const { user, setUser } = useContext(AuthContext);
   return (
@@ -41,6 +42,16 @@ export default function Dashboard() {
                 <span className="nav-link-text ms-1">Mesa de Trabajo</span>
               </a>
             </li>
+            <li className="nav-item">
+              <Link to={"/home"}>
+                <div className="nav-link text-white active bg-gradient-primary">
+                  <div className="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                    <i className="material-icons opacity-10"></i>
+                  </div>
+                  <span className="nav-link-text ms-1">Buscador</span>
+                </div>
+              </Link>
+            </li>
           </ul>
         </div>
         <div className="sidenav-footer position-absolute w-100 bottom-0 ">
@@ -58,27 +69,6 @@ export default function Dashboard() {
           </div>
         </div>
       </aside>
-      <main className="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
-        <nav
-          className="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl"
-          id="navbarBlur"
-          navbar-scroll="true"
-        ></nav>
-        <div className="container-fluid py-4">
-          <input type="file" id="inpFile" />
-          <button type="button" id="btnUpload">
-            Subir a Base de datos
-          </button>
-          <button id="descargar">Descargar TXT</button>
-          <br />
-          <br />
-          <textarea
-            style={{width: "300px", height: "150px"}}
-            id="resultText"
-            placeholder="Your PDF text will appear here..."
-          ></textarea>
-        </div>
-      </main>
     </div>
   );
 }

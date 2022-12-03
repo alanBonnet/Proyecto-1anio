@@ -32,18 +32,17 @@ export default function Dashboard() {
         >
           <ul className="navbar-nav">
             <li className="nav-item">
-              <a
-                className="nav-link text-white active bg-gradient-primary"
-                href="./pages/dashboard.html"
-              >
-                <div className="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                  <i className="material-icons opacity-10"></i>
+              <Link to={"/dashboard/home"}>
+                <div className="nav-link text-white active bg-gradient-primary">
+                  <div className="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                    <i className="material-icons opacity-10"></i>
+                  </div>
+                  <span className="nav-link-text ms-1">Mesa de Trabajo</span>
                 </div>
-                <span className="nav-link-text ms-1">Mesa de Trabajo</span>
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <Link to={"/dashboard/home"}>
+              <Link to={"/dashboard/search"}>
                 <div className="nav-link text-white active bg-gradient-primary">
                   <div className="text-white text-center me-2 d-flex align-items-center justify-content-center">
                     <i className="material-icons opacity-10"></i>

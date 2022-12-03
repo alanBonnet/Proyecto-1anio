@@ -24,6 +24,7 @@ export default function App() {
                         <LoginRoutes />
                     </PublicRoutes>
                 } />
+                
                 <Route path="/dashboard/*" element={
                     <PrivateRoutes>
                         <DashboardRoutes />

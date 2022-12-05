@@ -37,7 +37,7 @@ export default function Dashboard() {
                   <div className="text-white text-center me-2 d-flex align-items-center justify-content-center">
                     <i className="material-icons opacity-10"></i>
                   </div>
-                  <span className="nav-link-text ms-1">Mesa de Trabajo</span>
+                  <span className="nav-link-text text-white ms-1">Mesa de Trabajo</span>
                 </div>
               </Link>
             </li>
@@ -47,7 +47,7 @@ export default function Dashboard() {
                   <div className="text-white text-center me-2 d-flex align-items-center justify-content-center">
                     <i className="material-icons opacity-10"></i>
                   </div>
-                  <span className="nav-link-text ms-1">Buscador</span>
+                  <span className="nav-link-text text-white ms-1">Buscador</span>
                 </div>
               </Link>
             </li>

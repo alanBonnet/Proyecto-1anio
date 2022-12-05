@@ -14,9 +14,9 @@ export default function Home() {
 
   function onChangeFile() {
     if (changeFileUpload.current?.files[0]) {
-      diccionarioCV['convertir PDF a Texto'](changeFileUpload.current.files[0], setTextoPDF)
+      console.log(diccionarioCV['convertir PDF a Texto'](changeFileUpload.current.files[0], setTextoPDF))
       diccionarioCV['guardar archivo'](changeFileUpload.current.files[0], cont, setCont, setLinkSubida)
-
+      resultText.current.value = textoPDF
     }
   }
 
@@ -49,7 +49,6 @@ export default function Home() {
               className="col-9 col-md-6"
               style={{ height: "300px" }}
               id="resultText"
-              value={textoPDF}
               ref={resultText}
               placeholder="Your PDF text will appear here..."
             ></textarea>

@@ -1,9 +1,8 @@
 const router = require('express').Router();
 
 const {
-    subirPDF
+    pdf2text
 } = require('../controllers/cv.controllers')
 
-router.get('/subirArchivo', subirPDF)
-
+router.post('/extract-text', pdf2text)
 module.exports = router

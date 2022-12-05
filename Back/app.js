@@ -5,6 +5,7 @@ const morgan = require("morgan");
 const cors = require("cors");
 require("dotenv").config();
 const fs = require("fs");
+const pdfParse = require("pdf-parse");
 
 // conectar a la base de datos
 const ConnectDB = require("./src/db/db");
@@ -27,6 +28,7 @@ app.use(fileUpload());
 // Rutas
 app.use(require("./src/routes/user.routes")); // Rutas de Usuario
 app.use(require("./src/routes/auth.routes")); // Rutas de Authentication
+// app.use(require("./src/routes/cv.routes")); // Rutas de CV
 
 let Parser = require("text2json").Parser;
 let rawdata = "./src/data/file_100.txt";
@@ -106,7 +108,20 @@ app.get("/subirArchivo", async (req, res) => {
     });
   }
 });
+app.post('/extract-text',async (req, res) => {
+  try {
+      if (!req.files && !req.files.pdfFile) {
+          res.status(400);
+          res.end();
+      }
 
+      pdfParse(req.files.pdfFile).then((result) => {
+          res.json({text:result.text});
+      });
+  } catch (error) {
+      res.json({msg:"hubo un error con el parsing ",error:error.message})
+  }
+})
 //Inicio del servidor
 app.listen(port, () => {
   console.log("Iniciado en https://localhost:" + port);

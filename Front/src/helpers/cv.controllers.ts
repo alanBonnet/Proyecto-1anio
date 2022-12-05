@@ -16,7 +16,7 @@ const guardarArchivo = (archivoRecibido: Blob | any | MutableRefObject<undefined
     }
     modificadorContador(contador + 1)
 }
-const convertirPDF2TEXT = async (archivoRecibido: Blob | any | MutableRefObject<undefined>,modificarTexto: Dispatch<SetStateAction<String>>) => {
+const convertirPDF2TEXT = async (archivoRecibido: Blob | any | MutableRefObject<undefined>,modificarTexto: Dispatch<SetStateAction<String>>):Promise<any> => {
     try {
         const formData = new FormData();
         formData.append("pdfFile", archivoRecibido);
@@ -27,6 +27,14 @@ const convertirPDF2TEXT = async (archivoRecibido: Blob | any | MutableRefObject<
         const respuestaText = await respuesta.json();
         let resultTexting = respuestaText.text.trim();
         let pruebaJSON = JSON.stringify(((resultTexting).split("\n").join()))
+        pruebaJSON = await pruebaJSON.replace(/\,/,(e)=>" ")
+        pruebaJSON = await pruebaJSON.replace(/\,,/g, e => ", ")
+        pruebaJSON = await pruebaJSON.replace(/\, , ,/g, e => "")
+        pruebaJSON = await pruebaJSON.replace(/\PERFIL,/, "")
+        pruebaJSON = await pruebaJSON.replace(/\EXPERIENCIA,/, "")
+        pruebaJSON = await pruebaJSON.replace(/\EDUCACIÓN,/, "")
+        pruebaJSON = await pruebaJSON.replace(/\CONTACTO,/, "")
+        pruebaJSON = await pruebaJSON.replace(/\HABILIDADES,/, "")
         modificarTexto(pruebaJSON)
         console.log(pruebaJSON)
         return pruebaJSON

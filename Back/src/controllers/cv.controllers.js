@@ -14,7 +14,7 @@ cvCtrl.pdf2text = async (req, res) => {
             res.send(result.text);
         });
     } catch (error) {
-        res.send("hubo un error con el parsing")
+        res.json({msg:"hubo un error con el parsing ",error:error.message})
     }
 }
 module.exports = cvCtrl

@@ -1,9 +1,7 @@
 import React, { useRef, useState } from "react";
 import diccionarioCV from "../helpers/cv.controllers";
 import Dashboard from "./Dashboard";
-
-//css
-
+import axios from 'axios'
 export default function Home() {
   //useREFS
   const changeFileUpload = useRef()
@@ -22,6 +20,9 @@ export default function Home() {
     }
   }
 
+  function Transformar (){
+    axios.get('http://localhost:3000/subirArchivo').then(response=>{console.log(response.data.msg);})
+  }
   return (
     <div className="row">
       <div className="col-3">
@@ -40,7 +41,7 @@ export default function Home() {
           <button type="button" id="btnUpload" onClick={onChangeFile} >
             Subir a Base de datos
           </button>
-          <button id="descargar">Descargar TXT</button>
+          <button id="descargar" onClick={()=>{Transformar()}}>Transformar</button>
           <br />
           <br />
           <div className="row">

@@ -8,6 +8,7 @@ const validate = {}
 
 validate.create = [
     check('username')
+        .trim()
         .exists({checkNull:true}).withMessage('Falta el nombre de usuario')
         .isLength({min:8}).withMessage('La extensión debe ser mayor o igual a 8')
         .custom(async(username, {req})=>{
@@ -18,14 +19,15 @@ validate.create = [
             return true
         } )
         .not()
-        .isEmpty().withMessage('Campo vacío')
-        .contains(['admin','4dm1n','Adm1n','4admin']).withMessage('No puede crear una cuenta con nombre de usuario admin'),
+        .isEmpty().withMessage('Campo vacío'),
     check('password')
+        .trim()
         .exists({checkNull:true}).withMessage('Falta la contraseña')
         .isLength({min:8}).withMessage('La extensión debe ser mayor o igual a 8')
         .not()
         .isEmpty().withMessage('Campo vacío'),
     check('email')
+        .trim()
         .exists({checkNull:true}).withMessage('Falta el email')
         .isEmail().withMessage('No es un Email')
         .not()

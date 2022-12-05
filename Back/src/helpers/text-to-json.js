@@ -1,32 +1,34 @@
 const fs = require("fs");
-let Parser = require("text2json").Parser;
-let rawdata = "../data/file_100.txt";
+const path = require("path");
 
 const convertJson = async () => {
-  let parse = new Parser({ hasHeader: true });
-  parse
-    .text2json(rawdata)
-    .on("error", (err) => {
-      console.error(err);
-    })
-    .on("headers", (headers) => {
-      console.log(headers);
-    })
-    .on("row", (row) => {
-      console.log(row);
-      fs.writeFile(
-        "../JSON/archivo.json",
-        JSON.stringify(row),
-        "utf8",
-        (err) => {
-          if (err) throw err;
-          console.log("The file has been saved!");
-        }
-      );
-    })
-    .on("end", (e) => {
-      console.log("Done");
-    });
+  try {
+    let Parser = require("text2json").Parser;
+    let rawdata = "../data/file_100.txt"
+    let parse = new Parser({ hasHeader: true });
+    parse
+      .text2json(rawdata)
+      .on("error", (err) => {
+        console.error(err);
+        return err
+      })
+      .on("headers", (headers) => {
+        console.log(headers);
+        console.log("llega a headers")
+      })
+      .on("row", (row) => {
+        console.log(row);
+        console.log("llega a rows")
+        return ({ row })
+      })
+      .on("end", (e) => {
+        console.log("Done");
+
+      });
+    return parse
+  } catch (error) {
+    return error
+  }
 };
 
 module.exports = convertJson;

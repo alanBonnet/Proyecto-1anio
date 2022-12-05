@@ -1,7 +1,27 @@
-import React from "react";
+import React, { useRef, useState } from "react";
+import diccionarioCV from "../helpers/cv.controllers";
 import Dashboard from "./Dashboard";
 
+//css
+
 export default function Home() {
+  //useREFS
+  const changeFileUpload = useRef()
+  const resultText = useRef()
+  // useStates
+  const [cont, setCont] = useState(0)
+  const [linkSubida, setLinkSubida] = useState(null)
+  const [textoPDF, setTextoPDF] = useState("")
+  //functions
+
+  function onChangeFile() {
+    if (changeFileUpload.current?.files[0]) {
+      diccionarioCV['convertir PDF a Texto'](changeFileUpload.current.files[0], setTextoPDF)
+      diccionarioCV['guardar archivo'](changeFileUpload.current.files[0], cont, setCont, setLinkSubida)
+
+    }
+  }
+
   return (
     <div className="row">
       <div className="col-3">
@@ -15,8 +35,9 @@ export default function Home() {
           navbar-scroll="true"
         ></nav>
         <div className="container-fluid py-4">
-          <input type="file" id="inpFile" />
-          <button type="button" id="btnUpload">
+          <input type="file" id="fileUpload" ref={changeFileUpload} />
+
+          <button type="button" id="btnUpload" onClick={onChangeFile} >
             Subir a Base de datos
           </button>
           <button id="descargar">Descargar TXT</button>
@@ -25,8 +46,10 @@ export default function Home() {
           <div className="row">
             <textarea
               className="col-9 col-md-6"
-              style={{height:"300px"}}
+              style={{ height: "300px" }}
               id="resultText"
+              value={textoPDF}
+              ref={resultText}
               placeholder="Your PDF text will appear here..."
             ></textarea>
           </div>

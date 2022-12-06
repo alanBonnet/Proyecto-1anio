@@ -1,3 +1,5 @@
+const cvModel  = require('../models/CV')
+
 const pdfParse = require("pdf-parse");
 
 const cvCtrl = {};
@@ -17,4 +19,17 @@ cvCtrl.pdf2text = async (req, res) => {
         res.json({msg:"hubo un error con el parsing ",error:error.message})
     }
 }
+
+cvCtrl.getCVs = async (req, res) => {
+    try {
+        const allCV = await cvModel.find();
+        return res.json(...allCV)
+    } catch (error) {
+        return res.status(500).json({
+            message: "Hubo un error con traer los CV",
+            error:error.message
+        })
+    }
+}
+
 module.exports = cvCtrl

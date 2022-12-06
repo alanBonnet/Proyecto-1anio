@@ -28,7 +28,7 @@ app.use(fileUpload());
 // Rutas
 app.use(require("./src/routes/user.routes")); // Rutas de Usuario
 app.use(require("./src/routes/auth.routes")); // Rutas de Authentication
-// app.use(require("./src/routes/cv.routes")); // Rutas de CV
+app.use(require("./src/routes/cv.routes")); // Rutas de CV
 
 let Parser = require("text2json").Parser;
 let rawdata = "./src/data/file_100.txt";

@@ -1,8 +1,9 @@
 const router = require('express').Router();
 
 const {
-    pdf2text
-} = require('../controllers/cv.controllers')
+    getCVs
+} = require('../controllers/cv.controllers');
+const { isAuthorized, validateJWT } = require('../middlewares/validaciones');
 
-router.post('/extract-text', pdf2text)
+router.get('/cv',[validateJWT],getCVs)
 module.exports = router

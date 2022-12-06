@@ -23,7 +23,7 @@ cvCtrl.pdf2text = async (req, res) => {
 cvCtrl.getCVs = async (req, res) => {
     try {
         const allCV = await cvModel.find();
-        return res.json(...allCV)
+        return res.json(allCV)
     } catch (error) {
         return res.status(500).json({
             message: "Hubo un error con traer los CV",

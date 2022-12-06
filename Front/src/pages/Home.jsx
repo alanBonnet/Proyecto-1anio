@@ -1,33 +1,42 @@
 import React, { useEffect, useRef, useState } from "react";
 import diccionarioCV from "../helpers/cv.controllers";
 import Dashboard from "./Dashboard";
-import axios from 'axios'
+import axios from "axios";
 export default function Home() {
   //useREFS
-  const changeFileUpload = useRef()
-  const resultText = useRef()
+  const changeFileUpload = useRef();
+  const resultText = useRef();
   // useStates
-  const [cont, setCont] = useState(0)
-  const [linkSubida, setLinkSubida] = useState(null)
-  const [textoPDF, setTextoPDF] = useState("")
+  const [cont, setCont] = useState(0);
+  const [linkSubida, setLinkSubida] = useState(null);
+  const [textoPDF, setTextoPDF] = useState("");
   //functions
 
   async function onChangeFile() {
     if (changeFileUpload.current?.files[0]) {
-      await diccionarioCV['convertir PDF a Texto'](changeFileUpload.current.files[0], setTextoPDF)
-      diccionarioCV['guardar archivo'](changeFileUpload.current.files[0], cont, setCont, setLinkSubida)
+      await diccionarioCV["convertir PDF a Texto"](
+        changeFileUpload.current.files[0],
+        setTextoPDF
+      );
+      diccionarioCV["guardar archivo"](
+        changeFileUpload.current.files[0],
+        cont,
+        setCont,
+        setLinkSubida
+      );
     }
   }
 
   function Transformar() {
-    axios.get('http://localhost:3000/subirArchivo').then(response => { console.log(response.data.msg); })
+    axios.get("http://localhost:3000/subirArchivo").then((response) => {
+      console.log(response.data.msg);
+    });
   }
-  const guardarArchivoDeTexto = (contenido, nombre)=>{
-    const a = React.createElement('a')
-    const archivo = new Blob([contenido], {type: ''});
+  const guardarArchivoDeTexto = (contenido, nombre) => {
+    const a = React.createElement("a");
+    const archivo = new Blob([contenido], { type: "" });
     const url = URL.createObjectURL(archivo);
-    
-  }
+  };
   /* 
     const guardarArchivoDeTexto = (contenido, nombre) => {
         const a = document.createElement("a");
@@ -47,8 +56,8 @@ export default function Home() {
 
   //useEffect
   useEffect(() => {
-    resultText.current.value = textoPDF
-  }, [textoPDF])
+    // resultText.current.value = textoPDF;
+  }, [textoPDF]);
   return (
     <div className="row">
       <div className="col-3">
@@ -64,20 +73,97 @@ export default function Home() {
         <div className="container-fluid py-4">
           <input type="file" id="fileUpload" ref={changeFileUpload} />
 
-          <button type="button" id="btnUpload" onClick={onChangeFile} >
+          <button type="button" id="btnUpload" onClick={onChangeFile}>
             Subir a Base de datos
           </button>
-          <button id="descargar" onClick={() => { Transformar() }}>Transformar</button>
+          <button
+            id="descargar"
+            onClick={() => {
+              Transformar();
+            }}
+          >
+            Transformar
+          </button>
           <br />
           <br />
-          <div className="row">
-            <textarea
-              className="col-9 col-md-6"
-              style={{ height: "300px" }}
-              id="resultText"
-              ref={resultText}
-              placeholder="Your PDF text will appear here..."
-            ></textarea>
+          <div className="col-12 col-md-12">
+            <h4>Que estas buscando en el CV?</h4>
+            <div className="row">
+              <div className="col-3">
+                <p>Habilidades</p>
+                <div class="form-check form-switch">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="flexSwitchCheckDefault"
+                  />
+                  <label class="form-check-label" for="flexSwitchCheckDefault">
+                    JavaScript
+                  </label>
+                </div>
+                <div class="form-check form-switch">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="flexSwitchCheckDefault"
+                  />
+                  <label class="form-check-label" for="flexSwitchCheckDefault">
+                    Python
+                  </label>
+                </div>
+                <div class="form-check form-switch">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="flexSwitchCheckDefault"
+                  />
+                  <label class="form-check-label" for="flexSwitchCheckDefault">
+                    Habilidades blandas
+                  </label>
+                </div>
+              </div>
+              <div className="col-3">
+                {" "}
+                <p>Experiencia</p>
+                <div class="form-check form-switch">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="flexSwitchCheckDefault"
+                  />
+                  <label class="form-check-label" for="flexSwitchCheckDefault">
+                    Default switch checkbox input
+                  </label>
+                </div>
+              </div>
+              <div className="col-3">
+                {" "}
+                <p>Educacion</p>
+                <div class="form-check form-switch">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="flexSwitchCheckDefault"
+                  />
+                  <label class="form-check-label" for="flexSwitchCheckDefault">
+                    Default switch checkbox input
+                  </label>
+                </div>
+              </div>
+              <div className="col-3">
+                <p>Lenguajes</p>
+                <div class="form-check form-switch">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="flexSwitchCheckDefault"
+                  />
+                  <label class="form-check-label" for="flexSwitchCheckDefault">
+                    Default switch checkbox input
+                  </label>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </main>

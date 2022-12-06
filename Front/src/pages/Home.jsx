@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import diccionarioCV from "../helpers/cv.controllers";
 import Dashboard from "./Dashboard";
 import axios from 'axios'
@@ -12,17 +12,43 @@ export default function Home() {
   const [textoPDF, setTextoPDF] = useState("")
   //functions
 
-  function onChangeFile() {
+  async function onChangeFile() {
     if (changeFileUpload.current?.files[0]) {
-      console.log(diccionarioCV['convertir PDF a Texto'](changeFileUpload.current.files[0], setTextoPDF))
+      await diccionarioCV['convertir PDF a Texto'](changeFileUpload.current.files[0], setTextoPDF)
       diccionarioCV['guardar archivo'](changeFileUpload.current.files[0], cont, setCont, setLinkSubida)
-      resultText.current.value = textoPDF
     }
   }
 
-  function Transformar (){
-    axios.get('http://localhost:3000/subirArchivo').then(response=>{console.log(response.data.msg);})
+  function Transformar() {
+    axios.get('http://localhost:3000/subirArchivo').then(response => { console.log(response.data.msg); })
   }
+  const guardarArchivoDeTexto = (contenido, nombre)=>{
+    const a = React.createElement('a')
+    const archivo = new Blob([contenido], {type: ''});
+    const url = URL.createObjectURL(archivo);
+    
+  }
+  /* 
+    const guardarArchivoDeTexto = (contenido, nombre) => {
+        const a = document.createElement("a");
+        const archivo = new Blob([contenido], { type: '' });
+        const url = URL.createObjectURL(archivo);
+        a.href = url;
+        a.download = nombre;
+        a.click();
+        URL.revokeObjectURL(url);
+    }
+    const $botonDescargar = document.querySelector("#descargar");
+    $botonDescargar.onclick = () => {
+        guardarArchivoDeTexto(pruebaJSON, "html.json");
+
+    }
+  */
+
+  //useEffect
+  useEffect(() => {
+    resultText.current.value = textoPDF
+  }, [textoPDF])
   return (
     <div className="row">
       <div className="col-3">
@@ -41,7 +67,7 @@ export default function Home() {
           <button type="button" id="btnUpload" onClick={onChangeFile} >
             Subir a Base de datos
           </button>
-          <button id="descargar" onClick={()=>{Transformar()}}>Transformar</button>
+          <button id="descargar" onClick={() => { Transformar() }}>Transformar</button>
           <br />
           <br />
           <div className="row">

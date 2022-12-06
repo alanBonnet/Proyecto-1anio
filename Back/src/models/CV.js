@@ -1,42 +1,22 @@
 const { model, Schema } = require("mongoose");
-
+const stringTrim = {
+    type:String,
+    trim:true
+}
 const cvSchema = new Schema({
-    names: {
-        type: String,
-        trim: true,
-    },
-    address: {
-        type: String,
-        trim: true,
-    },
-    phone: {
-        type: String,
-        trim: true,
-    },
-    email: {
-        type: String,
-        trim: true,
-    },
-    summary: {
-        type: String,
-        trim: true,
-    },
-    skills: {
-        type: String,
-        trim: true,
-    },
-    experiences: {
-        type: String,
-        trim: true,
-    },
-    education: {
-        type: String,
-        trim: true,
-    },
-    languages: {
-        type: String,
-        trim: true,
-    },
+    names: stringTrim,
+    address: stringTrim,
+    phone: stringTrim,
+    email: stringTrim,
+    summary: stringTrim,
+    skills: stringTrim,
+    experiences: stringTrim,
+    education: stringTrim,
+    languages: stringTrim,
+},
+{
+    versionKey:false,
+    timestamps:true
 });
 
 const cv = model("cv", cvSchema);

@@ -31,5 +31,16 @@ cvCtrl.getCVs = async (req, res) => {
         })
     }
 }
-
+cvCtrl.findOnCv = async (req, res) => {
+    try {
+        const criterios =req.body;
+        const allCV = await cvModel.find({$and:[...criterios]})
+        return res.json(allCV)
+    } catch (error) {
+        return res.status(500).json({
+            message: "Hubo un error con traer los CV",
+            error:error.message
+        })
+    }
+}
 module.exports = cvCtrl

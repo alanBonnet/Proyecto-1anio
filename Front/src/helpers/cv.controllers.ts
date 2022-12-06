@@ -26,16 +26,23 @@ const convertirPDF2TEXT = async (archivoRecibido: Blob | any | MutableRefObject<
         })
         const respuestaText = await respuesta.json();
         let resultTexting = respuestaText.text.trim();
+        // ETAPAS DE FILTRADO
         let pruebaJSON = JSON.stringify(((resultTexting).split("\n").join()))
         pruebaJSON = await pruebaJSON.replace(/\,/,(e)=>" ")
         pruebaJSON = await pruebaJSON.replace(/\,,/g, e => ", ")
         pruebaJSON = await pruebaJSON.replace(/\, , ,/g, e => "")
-        pruebaJSON = await pruebaJSON.replace(/\,PERFIL,/, "\",\"")
+        pruebaJSON = await pruebaJSON.replace(/\,PERFIL,/, " ")
         pruebaJSON = await pruebaJSON.replace(/\,EXPERIENCIA,/, "\",\"")
         pruebaJSON = await pruebaJSON.replace(/\,EDUCACIÓN,/, "\",\"")
         pruebaJSON = await pruebaJSON.replace(/\,CONTACTO,/, "\",\"")
         pruebaJSON = await pruebaJSON.replace(/\,HABILIDADES,/, "\",\"")
+        pruebaJSON = await pruebaJSON.replace(/\LENGUAJES,/, "\",\"")
+        pruebaJSON = await pruebaJSON.replace(/\Tel:/,"")
+        pruebaJSON = await pruebaJSON.replace(/\Mail:/,"\",\"")
+        pruebaJSON = await pruebaJSON.replace(/\Dirección:/,"\",\"")
         pruebaJSON = await pruebaJSON.replace(/\,/, "\",\"")
+        pruebaJSON = await pruebaJSON.replace(/\, ,/g, e => "")
+        // SALIDA LUEGO DE LA FILTRACIÓN
         modificarTexto(pruebaJSON)
         console.log(pruebaJSON)
         return pruebaJSON

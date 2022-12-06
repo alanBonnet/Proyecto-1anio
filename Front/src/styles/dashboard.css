@@ -72,9 +72,6 @@
       color: black;
       transition: 0.5s;
   }
-  input[type="checkbox"]{
-      display: none;
-  }
   .box{
       position: absolute;
       top: 150%;

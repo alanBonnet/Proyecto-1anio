@@ -249,9 +249,9 @@ export default function Home() {
                                             <div className="social-media-icon">
                                                 <FontAwesomeIcon icon={faUserCheck} />
                                             </div>
-                                            <h3>100%</h3>
+                                            <h3>0%</h3>
                                             <p>
-                                                Sebastian Prieto tiene un excelente coincidencia con la
+                                                Sebastian Prieto tiene una coincidencia mala con la
                                                 busqueda realizada
                                             </p>
                                         </div>
@@ -263,9 +263,9 @@ export default function Home() {
                                             <div className="social-media-icon">
                                                 <FontAwesomeIcon icon={faUserXmark} />
                                             </div>
-                                            <h3>30%</h3>
+                                            <h3>50%</h3>
                                             <p>
-                                                Lautaro Durante tiene una coincidencia mala con la
+                                                Lautaro Durante tiene una coincidencia regular con la
                                                 busqueda realizada
                                             </p>
                                         </div>
@@ -277,9 +277,9 @@ export default function Home() {
                                             <div className="social-media-icon">
                                                 <FontAwesomeIcon icon={faUserMinus} />
                                             </div>
-                                            <h3>50%</h3>
+                                            <h3>100%</h3>
                                             <p>
-                                                Alan Bonnet tiene una coincidencia regular con la
+                                                Alan Bonnet tiene una coincidencia excelente con la
                                                 busqueda realizada
                                             </p>
                                         </div>

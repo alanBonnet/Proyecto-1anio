@@ -3,6 +3,7 @@ import Dashboard from "./Dashboard";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
+import Group3CheckBoxes from "../components/CheckBox";
 export default function Search() {
   const [isLoading, setIsLoading] = useState(false);
   const [isSearching, setIsSearching] = useState(false);
@@ -11,24 +12,73 @@ export default function Search() {
       <div className="col-3">
         <Dashboard />
       </div>
-
+      
       <main className=" col-9 main-content position-relative max-height-vh-100 h-100  border-radius-lg ">
-        <div className="container-fluid py-4 border border-5 rounded mt-5 rounded-pill w-75">
-          <input type="checkbox" className="d-none" id="check" hidden />
-          <div className="box position-relative mt-5">
-            <input type="text" placeholder="Buscar CVs ..." />
-            <label
-              htmlFor="check"
-              onClick={() => {
-                setIsSearching(true);
-                setIsLoading(true);
-                setTimeout(() => {
-                  setIsLoading(false);
-                }, 2700);
-              }}
-            >
-              <FontAwesomeIcon icon={faSearch} />
-            </label>
+        <div className="container-fluid py-4 border border-5 rounded mt-5 w-75">
+        <div className="col-12 col-md-12">
+                        <h5>¿Qué buscas en la base de datos?</h5>
+                        <div className="row">
+                            <div className="col-3">
+                                <p>Habilidades</p>
+                                <Group3CheckBoxes
+                                    name1="Javascript"
+                                    id1={1}
+                                    id2={2}
+                                    id3={3}
+                                    name2="Python"
+                                    name3="Habilidades blandas"
+                                />
+                            </div>
+                            <div className="col-3">
+                                <p>Experiencia</p>
+                                <Group3CheckBoxes
+                                    name1="Si"
+                                    id1={4}
+                                    id2={5}
+                                    id3={6}
+                                    name2="No"
+                                />
+                            </div>
+                            <div className="col-3">
+                                {" "}
+                                <p>Educacion</p>
+                                <Group3CheckBoxes
+                                    name1="Secundario"
+                                    id1={7}
+                                    id2={8}
+                                    id3={9}
+                                    name2="Terciario/Universidad"
+                                    name3="Cursos"
+                                />
+                            </div>
+                            <div className="col-3">
+                                <p>Lenguajes</p>
+                                <Group3CheckBoxes
+                                    name1="Inglés"
+                                    id1={1}
+                                    id2={2}
+                                    id3={3}
+                                    name2="Chino Mandarín"
+                                    name3="Alemán"
+                                />
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="col-">
+                                <button
+                                    id="descargar"
+                                    onClick={() => {
+                                      setIsSearching(true);
+                                      setIsLoading(true);
+                                      setTimeout(() => {
+                                        setIsLoading(false);
+                                      }, 2700);
+                                    }} 
+                                >
+                                    Analizar
+                                </button>
+                            </div>
+                        </div>
           </div>
         </div>
         {!isSearching ? (

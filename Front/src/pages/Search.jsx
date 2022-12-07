@@ -20,17 +20,17 @@ export default function Search() {
             <thead>
               <tr>
                 <th scope="col">#</th>
-                <th scope="col">First</th>
-                <th scope="col">Last</th>
-                <th scope="col">Handle</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Puntaje</th>
+                <th scope="col">Link</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
+                <td>Pablito Rodrigez</td>
+                <td>100%</td>
+                <td><a href="https://drive.google.com/file/d/1GFEP7L7jeieWaiqjp8QG9WBxXHEKMdTn/view?usp=sharing">link</a></td>
               </tr>
               <tr>
                 <th scope="row">2</th>

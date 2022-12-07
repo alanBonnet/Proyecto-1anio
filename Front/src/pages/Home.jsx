@@ -247,7 +247,7 @@ export default function Home() {
                                     <div className="neumorphic-card">
                                         <div className="contentBox">
                                             <div className="social-media-icon">
-                                                <FontAwesomeIcon icon={faUserCheck} />
+                                                <FontAwesomeIcon icon={faUserXmark} />
                                             </div>
                                             <h3>0%</h3>
                                             <p>
@@ -261,7 +261,7 @@ export default function Home() {
                                     <div class="neumorphic-card">
                                         <div class="contentBox">
                                             <div className="social-media-icon">
-                                                <FontAwesomeIcon icon={faUserXmark} />
+                                                <FontAwesomeIcon icon={faUserMinus} />
                                             </div>
                                             <h3>50%</h3>
                                             <p>
@@ -275,7 +275,7 @@ export default function Home() {
                                     <div class="neumorphic-card">
                                         <div class="contentBox">
                                             <div className="social-media-icon">
-                                                <FontAwesomeIcon icon={faUserMinus} />
+                                                <FontAwesomeIcon icon={faUserCheck} />
                                             </div>
                                             <h3>100%</h3>
                                             <p>

@@ -138,7 +138,7 @@ export default function Home() {
                             }, 3000)
                         }}
                     >
-                        Transformar
+                        Analizar
                     </button>
                     <br />
                     <br />
@@ -186,7 +186,7 @@ export default function Home() {
                             </div>
                         </div>
                             : <div className="row mt-5">
-                                <div className="col-4 container-01">
+                                <div className="col-12  col-lg-4 container-01">
                                     <div className="neumorphic-card">
                                         <div className="contentBox">
                                             <div className="social-media-icon">
@@ -200,7 +200,7 @@ export default function Home() {
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-4 container-01">
+                                <div class="col-12  col-lg-4 container-01">
                                     <div class="neumorphic-card">
                                         <div class="contentBox">
                                             <div className="social-media-icon">
@@ -214,7 +214,7 @@ export default function Home() {
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-4 container-01">
+                                <div class="col-12 col-lg-4 container-01">
                                     <div class="neumorphic-card">
                                         <div class="contentBox">
                                             <div className="social-media-icon">
